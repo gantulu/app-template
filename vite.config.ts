@@ -1,0 +1,4 @@
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { VitePWA } from 'vite-plugin-pwa';
+export default defineConfig({plugins:[react(),VitePWA({registerType:'autoUpdate',includeAssets:['pwa/icons/icon.svg'],manifest:{name:'Mobile UI Kit',short_name:'UI Kit',description:'A modular, mobile-first UI kit and PWA starter.',theme_color:'#101828',background_color:'#f7f8fa',display:'standalone',orientation:'portrait',scope:'/',start_url:'/',icons:[{src:'/pwa/icons/icon.svg',sizes:'any',type:'image/svg+xml',purpose:'any maskable'}]},workbox:{globPatterns:['**/*.{js,css,html,svg,png,ico,woff2}'],navigateFallback:'index.html'},devOptions:{enabled:false}})]});

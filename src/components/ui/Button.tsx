@@ -1,0 +1,3 @@
+import type { ButtonHTMLAttributes } from 'react';
+export type ButtonProps=ButtonHTMLAttributes<HTMLButtonElement>&{variant?:'primary'|'secondary'|'ghost'|'danger';size?:'sm'|'md'|'lg';block?:boolean};
+export function Button({variant='primary',size='md',block=false,className='',type='button',...props}:ButtonProps){return <button type={type} className={['ui-button',`ui-button--${variant}`,`ui-button--${size}`,block&&'ui-button--block',className].filter(Boolean).join(' ')} {...props}/>;}

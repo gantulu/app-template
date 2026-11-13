@@ -1,0 +1,2 @@
+import type { HTMLAttributes } from 'react';
+export function Badge({tone='neutral',className='',...props}:HTMLAttributes<HTMLSpanElement>&{tone?:'neutral'|'success'|'warning'|'danger'|'info'}){return <span className={['ui-badge',`ui-badge--${tone}`,className].join(' ')} {...props}/>;}

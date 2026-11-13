@@ -1,0 +1,2 @@
+import type { InputHTMLAttributes } from 'react';
+export function Input({invalid=false,className='',...props}:InputHTMLAttributes<HTMLInputElement>&{invalid?:boolean}){return <input className={['ui-input',invalid&&'ui-input--invalid',className].filter(Boolean).join(' ')} aria-invalid={invalid||undefined} {...props}/>;}

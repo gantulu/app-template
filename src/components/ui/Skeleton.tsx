@@ -1,0 +1,2 @@
+type Props={width?:string;height?:string;radius?:'sm'|'md'|'lg'|'pill'};
+export function Skeleton({width='100%',height='16px',radius='md'}:Props){return <span className={`ui-skeleton ui-skeleton--${radius}`} style={{width,height}} aria-hidden="true"/>;}
