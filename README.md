@@ -1,124 +1,167 @@
-# App Template — React + Vite Mobile UI/UX
+# Mobile UI Kit — React + Vite + PWA
 
-A starter template for building modern, responsive, mobile-first applications with **React** and **Vite**. The project is intended for designing and developing polished mobile UI/UX experiences that work across mobile, tablet, and desktop screens.
+A reusable, mobile-first **UI component kit and starter foundation** for building modern Progressive Web Apps (PWAs) with React and Vite.
 
-> **Repository status:** This repository is currently a documentation-first starting point. The application source code and dependencies have not been added yet.
+The project focuses on consistent mobile interface patterns, reusable components, responsive layouts, accessibility, and installable web-app capabilities. It is intended to provide a UI foundation that can be adapted to different products—not a finished application for one specific business.
 
-## Goals
+> **Repository status:** Documentation baseline only. The React application, UI components, and PWA configuration have not been implemented yet.
 
-- Build mobile-first interfaces with responsive layouts.
-- Keep components reusable, accessible, and easy to maintain.
-- Establish a consistent design system for colors, typography, spacing, and UI components.
-- Support touch-friendly interactions and mobile navigation patterns.
-- Keep the frontend architecture simple and scalable.
+## Project Goals
 
-## Tech Stack
+- Provide reusable components for mobile-first product interfaces.
+- Establish a consistent design system and component API.
+- Support responsive layouts across mobile, tablet, and desktop.
+- Deliver touch-friendly interactions and mobile navigation patterns.
+- Add PWA capabilities such as installation and configurable offline behavior.
+- Keep the codebase modular, accessible, and easy to extend.
+
+## Technology Stack
 
 | Technology | Purpose |
 | --- | --- |
-| React | Component-based UI |
-| Vite | Development server and production build tooling |
-| JavaScript or TypeScript | Application logic and type safety |
+| React | Component-based user interface |
+| Vite | Development server and production build |
+| TypeScript | Application implementation and type safety |
 | CSS | Responsive styling and design tokens |
-| Lucide React *(optional)* | Consistent interface icons |
+| vite-plugin-pwa | PWA manifest and service-worker integration |
+| Workbox | Service-worker caching strategies through PWA tooling |
+| Lucide React (optional) | Consistent interface icons |
 
-The exact dependencies will be finalized when the application scaffold is added.
+## UI Kit Scope
+
+### Foundation
+- Color, typography, spacing, radius, shadow, and breakpoint tokens.
+- Responsive containers and safe-area utilities.
+- Light and dark theme foundations.
+
+### Components
+- Buttons, icon buttons, badges, avatars, and cards.
+- Inputs, textareas, selects, checkboxes, radio buttons, and switches.
+- Tabs, segmented controls, lists, and navigation items.
+- Dialogs, bottom sheets, drawers, dropdowns, and toast notifications.
+- Loading indicators, skeletons, empty states, and error states.
+
+### Mobile patterns
+- Top app bars and bottom navigation.
+- Search and filter panels.
+- Sticky action areas.
+- Mobile forms and confirmation flows.
+- Responsive page and dashboard layouts.
+
+Components will be added incrementally; this list describes the intended scope, not features already available in the repository.
+
+## PWA Capabilities
+
+The PWA implementation is planned to include:
+- A web app manifest with application name, icons, theme color, and display settings.
+- Service-worker registration and lifecycle handling.
+- An installable experience on supported browsers and platforms.
+- Explicit caching strategies for the app shell and selected static assets.
+- Offline fallback behavior for routes where appropriate.
+- Update handling so users can be informed when a new version is available.
+
+**Important:** Offline support depends on the resources and data flows that are deliberately cached. Dynamic API data, authentication, and transactions should not be assumed to work offline automatically. PWA installation and platform behavior also vary by browser and operating system.
 
 ## Getting Started
 
-This repository does not contain an application scaffold yet. To initialize a React + Vite application in the repository root:
-
-```bash
-npm create vite@latest . -- --template react
-npm install
-npm run dev
-```
-
-Open the local URL printed by Vite to view the application.
-
-To create a TypeScript version instead, use the `react-ts` template:
+The repository currently contains documentation only. To initialize the application in the repository root:
 
 ```bash
 npm create vite@latest . -- --template react-ts
+npm install
+npm install vite-plugin-pwa
+npm run dev
 ```
+
+For a JavaScript project, replace the react-ts template with react.
 
 ## Recommended Project Structure
 
-The following structure is a proposed baseline. It can be adjusted to match the application's actual features.
-
 ```text
+public/
+└── pwa/
+    ├── icons/
+    └── screenshots/
+
 src/
 ├── assets/
+│   ├── fonts/
 │   ├── icons/
 │   └── images/
 ├── components/
 │   ├── ui/
-│   └── layout/
-├── features/
+│   └── patterns/
 ├── hooks/
+├── layouts/
 ├── pages/
-├── routes/
 ├── styles/
-│   ├── globals.css
-│   └── tokens.css
+│   ├── tokens.css
+│   ├── themes.css
+│   └── global.css
 ├── utils/
-├── App.jsx
-└── main.jsx
+├── App.tsx
+└── main.tsx
 
-public/
-└── images/
+index.html
+vite.config.ts
 ```
 
-## Mobile UI/UX Guidelines
+The structure may evolve as the component library and example screens grow.
 
-### Layout and responsiveness
-- Start with narrow mobile viewports, then enhance layouts for larger screens.
-- Respect device safe areas where fixed navigation or actions are used.
-- Avoid horizontal overflow and content that depends on hover.
+## Mobile UI/UX Principles
 
-### Interaction
-- Use touch-friendly controls with adequate spacing.
-- Provide clear pressed, focused, disabled, loading, and error states.
-- Keep primary actions easy to reach and visually distinct.
-- Use predictable navigation and provide feedback after user actions.
+### Responsive design
+- Use a mobile-first layout and progressively enhance larger breakpoints.
+- Respect device safe areas, especially around fixed headers and bottom navigation.
+- Prevent horizontal overflow and avoid hover-only interactions.
 
-### Visual design
-- Define reusable design tokens for color, typography, spacing, radius, and elevation.
-- Maintain readable contrast and consistent visual hierarchy.
-- Use a consistent icon style and avoid unnecessary decoration.
+### Touch interactions
+- Provide comfortable touch targets and sufficient spacing.
+- Define visible pressed, focused, disabled, loading, and error states.
+- Keep primary actions clear and reachable.
 
 ### Accessibility
-- Use semantic HTML and accessible names for interactive controls.
-- Support keyboard navigation and visible focus states.
-- Do not communicate status using color alone.
+- Use semantic HTML and accessible labels.
+- Support keyboard navigation and visible focus indicators.
+- Maintain sufficient color contrast.
+- Do not rely on color alone to communicate status.
 - Respect reduced-motion preferences.
 
-## Development Scripts
+### Design consistency
+- Use shared design tokens rather than one-off values.
+- Keep component variants and states predictable.
+- Separate reusable UI primitives from product-specific features.
 
-After the Vite scaffold is initialized, the standard React + Vite scripts are:
+## Development Commands
+
+Once the Vite project is initialized, the standard scripts are expected to include:
 
 | Command | Description |
 | --- | --- |
-| `npm run dev` | Start the local development server |
-| `npm run build` | Create a production build |
-| `npm run preview` | Preview the production build locally |
+| npm run dev | Start the development server |
+| npm run build | Build the production app |
+| npm run preview | Preview the production build |
 
-## Development Roadmap
+Additional PWA validation and preview steps will be documented when the PWA configuration is implemented.
 
-- [ ] Initialize the React + Vite application.
-- [ ] Define the design tokens and responsive foundations.
-- [ ] Build reusable UI components.
-- [ ] Implement the application layout and navigation.
-- [ ] Develop screens and user flows.
-- [ ] Add accessibility and responsive checks.
-- [ ] Configure linting and production build verification.
+## Roadmap
+
+- [ ] Initialize React + Vite + TypeScript.
+- [ ] Configure the PWA plugin, manifest, icons, and service worker.
+- [ ] Define design tokens, themes, and responsive foundations.
+- [ ] Implement foundational UI components and variants.
+- [ ] Implement mobile navigation and common interaction patterns.
+- [ ] Add example screens demonstrating the UI kit.
+- [ ] Verify accessibility, responsive behavior, and PWA installation.
+- [ ] Test caching, offline fallback, and service-worker updates.
+- [ ] Add linting and production build checks.
 
 ## Project Status
 
-**Current phase:** Repository documentation and initial project definition.
+**Current phase:** Project definition and documentation.
 
-No UI screens, application features, or production integrations are implemented yet.
+No application components, screens, or PWA behavior are implemented yet.
 
 ---
 
-Built with React and Vite.
+Built with React, Vite, and PWA technologies.
