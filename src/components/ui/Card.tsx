@@ -1,0 +1,2 @@
+import type { HTMLAttributes } from 'react';
+export function Card({padding='md',className='',...props}:HTMLAttributes<HTMLDivElement>&{padding?:'sm'|'md'|'lg'}){return <div className={['ui-card',`ui-card--${padding}`,className].join(' ')} {...props}/>;}

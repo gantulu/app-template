@@ -1,0 +1,3 @@
+type Item={id:string;label:string;disabled?:boolean};
+type Props={items:Item[];value:string;onChange:(value:string)=>void;'aria-label':string};
+export function Tabs({items,value,onChange,'aria-label':label}:Props){return <div className="ui-tabs" role="tablist" aria-label={label}>{items.map(item=><button key={item.id} type="button" role="tab" id={`tab-${item.id}`} aria-selected={value===item.id} aria-controls={`panel-${item.id}`} disabled={item.disabled} className="ui-tab" onClick={()=>onChange(item.id)}>{item.label}</button>)}</div>;}
